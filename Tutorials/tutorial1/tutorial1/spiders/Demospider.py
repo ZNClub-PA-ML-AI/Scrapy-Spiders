@@ -9,6 +9,7 @@ class DmozSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+		print("inside spider")
         filename = response.url.split("/")[-2] + '.xml'
         with open(filename, 'wb') as f:
             f.write(response.body)
