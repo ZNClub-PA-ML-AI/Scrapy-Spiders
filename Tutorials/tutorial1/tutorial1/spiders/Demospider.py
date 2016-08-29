@@ -8,7 +8,8 @@ class DmozSpider(scrapy.Spider):
         "http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/"
     ]
 
-    def parse(self, response):		
+    def parse(self, response):
+		print()
         filename = response.url.split("/")[-2] + '.xml'
         with open(filename, 'wb') as f:
             f.write(response.body)
