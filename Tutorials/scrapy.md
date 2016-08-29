@@ -6,6 +6,9 @@ Scrapy is an application framework for crawling web sites and extracting structu
 
 Even though Scrapy was originally designed for web scraping, it can also be used to extract data using APIs (such as Amazon Associates Web Services) or as a general purpose web crawler.
 
+## Architecture
+
+
 ## Features
 
 - Built-in support for selecting and extracting data from HTML/XML sources using extended CSS selectors and XPath expressions, with helper methods to extract using regular expressions.
