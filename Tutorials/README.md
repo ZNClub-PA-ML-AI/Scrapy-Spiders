@@ -14,3 +14,6 @@ this __spidername__ is mentioned at spider.py under spiders dir
     -o: output
     -t: type
 
+###Links
+
+http://hirelofty.com/blog/scraping-election-data-scrapy/
