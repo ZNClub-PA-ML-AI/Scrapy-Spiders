@@ -8,7 +8,7 @@ Even though Scrapy was originally designed for web scraping, it can also be used
 
 ## Architecture
 
-![Architecture](http://doc.scrapy.org/en/latest/_images/scrapy_architecture.png "Scrapy Architecture")
+![Architecture](http://doc.scrapy.org/en/latest/_images/scrapy_architecture_02.png "Scrapy Architecture")
 
 [Visit here for more](http://doc.scrapy.org/en/latest/topics/architecture.html#architecture-overview)
 ## Project Structure
