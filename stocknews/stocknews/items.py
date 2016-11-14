@@ -11,9 +11,10 @@ import scrapy
 class StocknewsItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    
-    date = scrapy.Field()
-    title = scrapy.Field()
+        
+    href = scrapy.Field()
     intro = scrapy.Field()
-
+    title = scrapy.Field()
+    date = scrapy.Field()
+    
     pass

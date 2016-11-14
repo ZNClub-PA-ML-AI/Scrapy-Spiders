@@ -23,13 +23,15 @@ class LivemintSpider(scrapy.Spider):
     
     def parse(self, response):
         
-        title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["        
+        title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
         title_end = "]/div[@class='text-box']/h2[@class='split-heading-strong']/a/text()"        
-        intro_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["        
+        intro_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
         intro_end = "]/div[@class='text-box']/p[@class='intro']/a/text()"
-        date_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["        
+        date_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
         date_end = "]/div[@class='text-box']/p[@class='date-box']/text()"        
-        
+        href_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
+        href_end = "]/div[@class='text-box']/h2[@class='split-heading-strong']/a/@href"     
+           
         result=[]        
         
         for i in range(1,11):
@@ -44,6 +46,10 @@ class LivemintSpider(scrapy.Spider):
             
             path = date_start+str(i)+date_end
             item['date'] = response.selector.xpath(path).extract()
+            
+            path = href_start+str(i)+href_end
+            temp = response.selector.xpath(path).extract()
+            item['href'] = "http://www.livemint.com"+temp[0]
             
             result.append(item)
         
