@@ -24,7 +24,7 @@ class DmozSpider(scrapy.Spider):
 
     def parse(self, response):
         
-        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/h2[@class='split-heading-strong']"
+        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/h2[@class='split-heading-strong']/h2/a"
         text = response.selector.xpath(path).extract()
         with open("output.md", 'w') as f:
-            f.write(text[0])
+            f.write(type(text))
