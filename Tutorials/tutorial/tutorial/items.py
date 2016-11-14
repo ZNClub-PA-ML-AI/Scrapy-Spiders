@@ -14,6 +14,7 @@ Created on Tue Aug 23 09:50:27 2016
 import scrapy
 
 class DmozItem(scrapy.Item):
+	#title, href link and description
     title = scrapy.Field()
     link = scrapy.Field()
     desc = scrapy.Field()

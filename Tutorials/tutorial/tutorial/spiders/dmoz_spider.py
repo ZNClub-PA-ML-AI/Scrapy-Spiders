@@ -15,6 +15,12 @@ class DmozSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        filename = response.url.split("/")[-2] + '.html'
+        
+		# response has all scraped data
+		
+		# file name to be saved
+		filename = response.url.split("/")[-2] + '.html'
+		
+		# write in html file
         with open(filename, 'wb') as f:
             f.write(response.body)
