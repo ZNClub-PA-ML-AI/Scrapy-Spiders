@@ -17,3 +17,18 @@ this __spidername__ is mentioned at spider.py under spiders dir
 ###Links
 
 http://hirelofty.com/blog/scraping-election-data-scrapy/
+
+
+# Conda Commands
+
+### conda list
+### conda search beautiful-soup
+###conda install iopro
+###conda update conda
+###conda update python
+###conda update biopython
+
+
+###Links
+
+http://conda.pydata.org/docs/using/pkgs.html
