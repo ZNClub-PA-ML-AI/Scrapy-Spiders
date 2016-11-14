@@ -12,7 +12,7 @@ Created on Mon Nov 14 18:20:56 2016
 
 import scrapy
 
-class DmozSpider(scrapy.Spider):
+class LivemintSpider(scrapy.Spider):
     name = "test_livemint"
 
     allowed_domains = ["livemint.com"]
@@ -23,8 +23,18 @@ class DmozSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        
-        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/h2[@class='split-heading-strong']/h2/a"
+        #path1 = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/h2[@class='split-heading-strong']/a/text()"        
+        #path2 = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/p[@class='intro']/a/text()"        
+        #path3 = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box'][1]/div[@class='text-box']/p[@class='date-box']/text()"        
+        path=""
         text = response.selector.xpath(path).extract()
-        with open("output.md", 'w') as f:
-            f.write(type(text))
+        with open("output.md", 'a') as f:
+            for i in text:
+                f.writelines("\n"+str(i))
+
+'''
+OUTPUT
+
+output.md
+
+'''                
