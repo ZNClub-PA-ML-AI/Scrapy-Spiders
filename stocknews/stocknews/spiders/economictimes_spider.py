@@ -66,13 +66,13 @@ class EconomictimesSpider(scrapy.Spider):
     def parse(self, response):
 
         title_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
-        title_end = "]/h3/text()"                
+        title_end = "]/h3/a/text()"                
         intro_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
         intro_end = "]/p/text()"
         date_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
         date_end = "]/time[@class='date-format']/text()"        
         href_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
-        href_end = "]/h3//a/@href"     
+        href_end = "]/h3/a/@href"     
            
         result=[]        
         
