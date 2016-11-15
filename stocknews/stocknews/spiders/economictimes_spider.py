@@ -3,7 +3,7 @@
 # Please refer to the documentation for information on how to create and manage
 # your spiders.
 """
-Created on Mon Nov 15 09:10:34 2016
+Created on Tue Nov 15 09:10:34 2016
 
 @author: Nevil Dsouza
 """
@@ -40,19 +40,26 @@ class EconomictimesSpider(scrapy.Spider):
         href_end = "]/h3/a/@href"     
            
         result=[]        
+        ad = True
         
         for i in range(1,33):
             
             item = StocknewsItem()
+            
 
             path = title_start+str(i)+title_end
             #item['title'] = response.selector.xpath(path).extract()
             temp = response.selector.xpath(path).extract()
             
             #validity check            
-            if temp is None:
-                break
+            if len(temp)==0:
+                if ad is False:
+                    continue
+                else:                    
+                    ad=False
+                    continue
             else:
+                ad = True
                 item['title'] = temp
             
             path = intro_start+str(i)+intro_end
@@ -63,12 +70,31 @@ class EconomictimesSpider(scrapy.Spider):
             
             path = href_start+str(i)+href_end
             temp = response.selector.xpath(path).extract()
-            item['href'] = ""+temp[0]
+            item['href'] = "http://economictimes.indiatimes.com/"+temp[0]
             
             result.append(item)
         
         return result
 
 '''
+2016-11-15 09:45:40 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 28428,
+ 'downloader/request_count': 101,
+ 'downloader/request_method_count/GET': 101,
+ 'downloader/response_bytes': 2736170,
+ 'downloader/response_count': 101,
+ 'downloader/response_status_count/200': 101,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 11, 15, 4, 15, 40, 612781),
+ 'item_scraped_count': 1000,
+ 'log_count/DEBUG': 1101,
+ 'log_count/ERROR': 5,
+ 'log_count/INFO': 8,
+ 'response_received_count': 101,
+ 'scheduler/dequeued': 100,
+ 'scheduler/dequeued/memory': 100,
+ 'scheduler/enqueued': 100,
+ 'scheduler/enqueued/memory': 100,
+ 'start_time': datetime.datetime(2016, 11, 15, 4, 15, 27, 260002)}
 
 '''
