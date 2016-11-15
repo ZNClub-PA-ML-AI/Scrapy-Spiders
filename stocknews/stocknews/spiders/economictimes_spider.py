@@ -70,7 +70,7 @@ class EconomictimesSpider(scrapy.Spider):
             
             path = href_start+str(i)+href_end
             temp = response.selector.xpath(path).extract()
-            item['href'] = "http://economictimes.indiatimes.com/"+temp[0]
+            item['href'] = "http://economictimes.indiatimes.com"+temp[0]
             
             result.append(item)
         
