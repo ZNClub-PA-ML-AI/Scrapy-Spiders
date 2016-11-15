@@ -18,51 +18,16 @@ class EconomictimesSpider(scrapy.Spider):
     #domains
     allowed_domains = ["economictimes.indiatimes.com"]
     #urls 1 to 100
-    start_urls = ["http://economictimes.indiatimes.com/markets/stocks/news/articlelist/msid-2146843,page-1.cms"]
-    '''
-    for i in range(24,-1,-1):
+    start_urls = []
+    
+    for i in range(100,0,-1):
         
-        url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
-
-        temp = url_company_opinion+str(i)
+        url_start = "http://economictimes.indiatimes.com/markets/stocks/news/articlelist/msid-2146843,page-"
+        url_end = ".cms"
+        temp = url_start+str(i)+url_end
         start_urls.append(temp)
     
-        url_company_management = "http://www.livemint.com/Query/V1eAlpSAzt0kHm6oBnOvDI/management.html?facet=subSection&page=0"
-    
-        temp = url_company_management+str(i)
-        start_urls.append(temp)
         
-        url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"
-    
-        temp = url_results+str(i)
-        start_urls.append(temp)
-        
-        url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
-
-        temp = url_people+str(i)
-        start_urls.append(temp)
-    
-        url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"
-    
-        temp = url_infotech+str(i)
-        start_urls.append(temp)
-        
-        url_finservices = "http://www.livemint.com/Query/5jCbPmmTjmX6bvfyV5XlkJ/financial-services.html?facet=subSection&page=0"
-    
-        temp = url_finservices+str(i)
-        start_urls.append(temp)
-    
-        url_energy = "http://www.livemint.com/Query/hHUQJ3ncBXZBGH3eVyKlkJ/energy.html?facet=subSection&page=0"
-    
-        temp = url_energy+str(i)
-        start_urls.append(temp)
-
-        url_industry_opinion = "http://www.livemint.com/Query/t5YPD42JdoNxoDBxwNemkJ/industry-opinion.html?facet=subSection&page=0"
-    
-        temp = url_industry_opinion+str(i)
-        start_urls.append(temp)
-    '''
-    
     def parse(self, response):
 
         title_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
@@ -76,7 +41,7 @@ class EconomictimesSpider(scrapy.Spider):
            
         result=[]        
         
-        for i in range(1,2):
+        for i in range(1,33):
             
             item = StocknewsItem()
 
