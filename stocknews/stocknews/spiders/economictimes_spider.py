@@ -3,7 +3,7 @@
 # Please refer to the documentation for information on how to create and manage
 # your spiders.
 """
-Created on Mon Nov 14 23:16:56 2016
+Created on Mon Nov 15 09:10:34 2016
 
 @author: Nevil Dsouza
 """
@@ -11,14 +11,15 @@ Created on Mon Nov 14 23:16:56 2016
 import scrapy
 from stocknews.items import StocknewsItem
 
-class LivemintSpider(scrapy.Spider):
+class EconomictimesSpider(scrapy.Spider):
     
     #spider name
-    name = "livemint_spider"
+    name = "economictimes_spider"
     #domains
-    allowed_domains = ["livemint.com"]
-    #urls
-    start_urls = []
+    allowed_domains = ["economictimes.indiatimes.com"]
+    #urls 1 to 100
+    start_urls = ["http://economictimes.indiatimes.com/markets/stocks/news/articlelist/msid-2146843,page-1.cms"]
+    '''
     for i in range(24,-1,-1):
         
         url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
@@ -60,22 +61,22 @@ class LivemintSpider(scrapy.Spider):
     
         temp = url_industry_opinion+str(i)
         start_urls.append(temp)
-        
+    '''
     
     def parse(self, response):
-        
-        title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
-        title_end = "]/div[@class='text-box']/h2[@class='split-heading-strong']/a/text()"        
-        intro_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
-        intro_end = "]/div[@class='text-box']/p[@class='intro']/a/text()"
-        date_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
-        date_end = "]/div[@class='text-box']/p[@class='date-box']/text()"        
-        href_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
-        href_end = "]/div[@class='text-box']/h2[@class='split-heading-strong']/a/@href"     
+
+        title_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
+        title_end = "]/h3/text()"                
+        intro_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
+        intro_end = "]/p/text()"
+        date_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
+        date_end = "]/time[@class='date-format']/text()"        
+        href_start = "/html/body/section[@id='netspidersosh']/section[@id='pageContent']/div[@class='eachStory']["
+        href_end = "]/h3//a/@href"     
            
         result=[]        
         
-        for i in range(1,11):
+        for i in range(1,2):
             
             item = StocknewsItem()
 
@@ -97,32 +98,12 @@ class LivemintSpider(scrapy.Spider):
             
             path = href_start+str(i)+href_end
             temp = response.selector.xpath(path).extract()
-            item['href'] = "http://www.livemint.com"+temp[0]
+            item['href'] = ""+temp[0]
             
             result.append(item)
         
         return result
 
 '''
-2016-11-15 09:02:44 [scrapy] INFO: Dumping Scrapy stats:
-{'downloader/request_bytes': 130494,
- 'downloader/request_count': 306,
- 'downloader/request_method_count/GET': 306,
- 'downloader/response_bytes': 2140065,
- 'downloader/response_count': 306,
- 'downloader/response_status_count/200': 201,
- 'downloader/response_status_count/302': 105,
- 'finish_reason': 'finished',
- 'finish_time': datetime.datetime(2016, 11, 15, 3, 32, 44, 393673),
- 'item_scraped_count': 2000,
- 'log_count/DEBUG': 2306,
- 'log_count/ERROR': 22,
- 'log_count/INFO': 8,
- 'response_received_count': 201,
- 'scheduler/dequeued': 305,
- 'scheduler/dequeued/memory': 305,
- 'scheduler/enqueued': 305,
- 'scheduler/enqueued/memory': 305,
- 'start_time': datetime.datetime(2016, 11, 15, 3, 32, 33, 627249)}
 
 '''
