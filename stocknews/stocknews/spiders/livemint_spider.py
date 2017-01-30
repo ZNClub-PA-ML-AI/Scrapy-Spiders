@@ -9,6 +9,8 @@ Created on Mon Nov 14 23:16:56 2016
 """
 
 import scrapy
+import pandas as pd
+
 from stocknews.items import StocknewsItem
 
 class LivemintSpider(scrapy.Spider):
@@ -19,49 +21,86 @@ class LivemintSpider(scrapy.Spider):
     allowed_domains = ["livemint.com"]
     #urls
     start_urls = []
-    for i in range(24,-1,-1):
-        
-        url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
+#    for i in range(24,-1,-1):
+#        
+#        url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
+#
+#        temp = url_company_opinion+str(i)
+#        start_urls.append(temp)
+#    
+#        url_company_management = "http://www.livemint.com/Query/V1eAlpSAzt0kHm6oBnOvDI/management.html?facet=subSection&page=0"
+#    
+#        temp = url_company_management+str(i)
+#        start_urls.append(temp)
+#        
+#        url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"
+#    
+#        temp = url_results+str(i)
+#        start_urls.append(temp)
+#        
+#        url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
+#
+#        temp = url_people+str(i)
+#        start_urls.append(temp)
+#    
+#        url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"
+#    
+#        temp = url_infotech+str(i)
+#        start_urls.append(temp)
+#        
+#        url_finservices = "http://www.livemint.com/Query/5jCbPmmTjmX6bvfyV5XlkJ/financial-services.html?facet=subSection&page=0"
+#    
+#        temp = url_finservices+str(i)
+#        start_urls.append(temp)
+#    
+#        url_energy = "http://www.livemint.com/Query/hHUQJ3ncBXZBGH3eVyKlkJ/energy.html?facet=subSection&page=0"
+#    
+#        temp = url_energy+str(i)
+#        start_urls.append(temp)
+#
+#        url_industry_opinion = "http://www.livemint.com/Query/t5YPD42JdoNxoDBxwNemkJ/industry-opinion.html?facet=subSection&page=0"
+#    
+#        temp = url_industry_opinion+str(i)
+#        start_urls.append(temp)
+    file_name = 'livemint_href.csv'
 
-        temp = url_company_opinion+str(i)
-        start_urls.append(temp)
+    df = pd.read_csv(file_name,encoding='iso-8859-1')
     
-        url_company_management = "http://www.livemint.com/Query/V1eAlpSAzt0kHm6oBnOvDI/management.html?facet=subSection&page=0"
-    
-        temp = url_company_management+str(i)
-        start_urls.append(temp)
+    start_urls = df['href'].tolist()[:1]
         
-        url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"
-    
-        temp = url_results+str(i)
-        start_urls.append(temp)
+    def parse(self, response):
         
-        url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
+        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']"
+        body = response.selector.xpath(path).extract()
+        return {'body':body}
+        
 
-        temp = url_people+str(i)
-        start_urls.append(temp)
-    
-        url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"
-    
-        temp = url_infotech+str(i)
-        start_urls.append(temp)
-        
-        url_finservices = "http://www.livemint.com/Query/5jCbPmmTjmX6bvfyV5XlkJ/financial-services.html?facet=subSection&page=0"
-    
-        temp = url_finservices+str(i)
-        start_urls.append(temp)
-    
-        url_energy = "http://www.livemint.com/Query/hHUQJ3ncBXZBGH3eVyKlkJ/energy.html?facet=subSection&page=0"
-    
-        temp = url_energy+str(i)
-        start_urls.append(temp)
+'''
+2016-11-15 09:02:44 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 130494,
+ 'downloader/request_count': 306,
+ 'downloader/request_method_count/GET': 306,
+ 'downloader/response_bytes': 2140065,
+ 'downloader/response_count': 306,
+ 'downloader/response_status_count/200': 201,
+ 'downloader/response_status_count/302': 105,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 11, 15, 3, 32, 44, 393673),
+ 'item_scraped_count': 2000,
+ 'log_count/DEBUG': 2306,
+ 'log_count/ERROR': 22,
+ 'log_count/INFO': 8,
+ 'response_received_count': 201,
+ 'scheduler/dequeued': 305,
+ 'scheduler/dequeued/memory': 305,
+ 'scheduler/enqueued': 305,
+ 'scheduler/enqueued/memory': 305,
+ 'start_time': datetime.datetime(2016, 11, 15, 3, 32, 33, 627249)}
 
-        url_industry_opinion = "http://www.livemint.com/Query/t5YPD42JdoNxoDBxwNemkJ/industry-opinion.html?facet=subSection&page=0"
-    
-        temp = url_industry_opinion+str(i)
-        start_urls.append(temp)
-        
-    
+'''
+
+'''
+
     def parse(self, response):
         
         title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
@@ -102,27 +141,4 @@ class LivemintSpider(scrapy.Spider):
             result.append(item)
         
         return result
-
-'''
-2016-11-15 09:02:44 [scrapy] INFO: Dumping Scrapy stats:
-{'downloader/request_bytes': 130494,
- 'downloader/request_count': 306,
- 'downloader/request_method_count/GET': 306,
- 'downloader/response_bytes': 2140065,
- 'downloader/response_count': 306,
- 'downloader/response_status_count/200': 201,
- 'downloader/response_status_count/302': 105,
- 'finish_reason': 'finished',
- 'finish_time': datetime.datetime(2016, 11, 15, 3, 32, 44, 393673),
- 'item_scraped_count': 2000,
- 'log_count/DEBUG': 2306,
- 'log_count/ERROR': 22,
- 'log_count/INFO': 8,
- 'response_received_count': 201,
- 'scheduler/dequeued': 305,
- 'scheduler/dequeued/memory': 305,
- 'scheduler/enqueued': 305,
- 'scheduler/enqueued/memory': 305,
- 'start_time': datetime.datetime(2016, 11, 15, 3, 32, 33, 627249)}
-
 '''
