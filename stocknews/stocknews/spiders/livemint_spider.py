@@ -67,7 +67,7 @@ class LivemintSpider(scrapy.Spider):
 
     df = pd.read_csv(file_name,encoding='iso-8859-1')
     
-    start_urls = df['href'].tolist()[:10]
+    start_urls = df['href'].tolist()
         
     def parse(self, response):
         
