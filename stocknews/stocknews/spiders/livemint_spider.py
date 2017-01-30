@@ -10,6 +10,7 @@ Created on Mon Nov 14 23:16:56 2016
 
 import scrapy
 import pandas as pd
+import re
 
 from stocknews.items import StocknewsItem
 
@@ -72,11 +73,12 @@ class LivemintSpider(scrapy.Spider):
         
         path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']/p"
         body = response.selector.xpath(path).extract()
+        result=""
+        for i in body:
+            result=result+re.sub("<p>", "", i)
         
-        p_list = body.split(",")
-        
-        
-        return {'body':p_list}
+        result = result.strip()
+        return {'body':result}
         
 
 '''
