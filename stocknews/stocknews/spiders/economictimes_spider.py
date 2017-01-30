@@ -34,7 +34,7 @@ class EconomictimesSpider(scrapy.Spider):
 
     df = pd.read_csv(file_name,encoding='iso-8859-1')
     
-    start_urls = df['href'].tolist()[:10]
+    start_urls = df['href'].tolist()[:1]
     
     
     
@@ -57,11 +57,12 @@ class EconomictimesSpider(scrapy.Spider):
         
     def parse(self,response):
         #path = "/html/body[@class='bgImg ']/section[@id='netspidersosh']/div[@id='c_01']/section[@id='pageContent']/article/div[@class='artText printLiveShow']/div[@class='section1']/div[@class='Normal']"
-        #body = response.selector.xpath(path).extract()
+        path = "/html/body[@class='bgImg ']/section[@id='netspidersosh']/div[@id='c_01']/section[@id='pageContent']/article/h1[@class='title']/text()"
+        body = response.selector.xpath(path).extract()
 #        if len(body)==0:
 #            body = 'null'
 #        
-        return {'body':response}
+        return {'body':body}
 '''
 2016-11-15 09:45:40 [scrapy] INFO: Dumping Scrapy stats:
 {'downloader/request_bytes': 28428,
