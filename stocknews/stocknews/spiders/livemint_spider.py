@@ -75,7 +75,10 @@ class LivemintSpider(scrapy.Spider):
         body = response.selector.xpath(path).extract()
         result=""
         for i in body:
-            result=result+re.sub("<p>", "", i)
+            temp = re.sub("<p>", "", i)
+            temp = re.sub("</p>","",temp)
+            temp = re.sub("<i>The writer does not own shares in the above-mentioned companies.</i>","",temp)
+            result=result+temp
         
         result = result.strip()
         return {'body':result}
