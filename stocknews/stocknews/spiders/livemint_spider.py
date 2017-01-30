@@ -70,9 +70,13 @@ class LivemintSpider(scrapy.Spider):
         
     def parse(self, response):
         
-        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']"
+        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']/p"
         body = response.selector.xpath(path).extract()
-        return {'body':body}
+        
+        p_list = body.split(",")
+        
+        
+        return {'body':p_list}
         
 
 '''
