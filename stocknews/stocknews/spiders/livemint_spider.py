@@ -23,7 +23,7 @@ class LivemintSpider(scrapy.Spider):
     #urls
     start_urls = []
         
-    file_name = 'livemint_data_2.csv'
+    file_name = 'livemint_data.csv'
 
     df = pd.read_csv(file_name,encoding='iso-8859-1')
     
@@ -42,7 +42,7 @@ class LivemintSpider(scrapy.Spider):
             result=result+temp
         
         result = result.strip()
-        return {'body':result}
+        return {'href':response.url,'body':result}
         
 
 '''
