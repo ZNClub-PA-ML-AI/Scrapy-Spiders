@@ -1,1 +1,0 @@
-data is saved in the form of HTML
