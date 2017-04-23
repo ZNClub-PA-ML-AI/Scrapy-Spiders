@@ -5,7 +5,7 @@
 """
 Created on Mon Nov 14 23:16:56 2016
 
-@author: Nevil Dsouza
+@author: ZNevzz
 """
 
 import scrapy
@@ -26,7 +26,7 @@ class LivemintSpider(scrapy.Spider):
 
     for i in range(24,-1,-1):
         
-        if i in range(0,13):
+        if i in range(0,5):
             url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
             temp = url_company_opinion+str(i)
             start_urls.append(temp)
@@ -35,17 +35,17 @@ class LivemintSpider(scrapy.Spider):
         temp = url_company_management+str(i)
         start_urls.append(temp)
     
-        if i in range(0,18):
+        if i in range(0,11):
             url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"    
             temp = url_results+str(i)
             start_urls.append(temp)
         
-        if i in range(0,14):
+        if i in range(0,17):
             url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
             temp = url_people+str(i)
             start_urls.append(temp)
         
-        if i in range(0,20):
+        if i in range(0,25):
             url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"    
             temp = url_infotech+str(i)
             start_urls.append(temp)
@@ -63,7 +63,9 @@ class LivemintSpider(scrapy.Spider):
             temp = url_industry_opinion+str(i)
             start_urls.append(temp)
             
-    
+    start_urls=start_urls[:4]
+	## end
+	
     def parse(self, response):
         
         title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["

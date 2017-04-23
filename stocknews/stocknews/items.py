@@ -18,7 +18,7 @@ class StocknewsItem(scrapy.Item):
     date = scrapy.Field()
     
     ## new fields
-    company = scrapy.Field()
-    body = scrapy.Field()
+    #company = scrapy.Field()
+    #body = scrapy.Field()
     
     pass
