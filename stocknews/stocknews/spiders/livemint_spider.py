@@ -22,8 +22,51 @@ class LivemintSpider(scrapy.Spider):
     allowed_domains = ["livemint.com"]
     #urls
     start_urls = []
-    start_urls.append("http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page=0")
+    #start_urls.append("http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page=0")
 	
+    for i in range(24,-1,-1):
+        
+        if i in range(0,5):
+            url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
+            temp = url_company_opinion+str(i)
+            start_urls.append(temp)
+    
+        url_company_management = "http://www.livemint.com/Query/V1eAlpSAzt0kHm6oBnOvDI/management.html?facet=subSection&page=0"    
+        temp = url_company_management+str(i)
+        start_urls.append(temp)
+    
+        if i in range(0,11):
+            url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"    
+            temp = url_results+str(i)
+            start_urls.append(temp)
+        
+        if i in range(0,17):
+            url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
+            temp = url_people+str(i)
+            start_urls.append(temp)
+        
+        if i in range(0,25):
+            url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"    
+            temp = url_infotech+str(i)
+            start_urls.append(temp)
+        
+        url_finservices = "http://www.livemint.com/Query/5jCbPmmTjmX6bvfyV5XlkJ/financial-services.html?facet=subSection&page=0"    
+        temp = url_finservices+str(i)
+        start_urls.append(temp)
+    
+        url_energy = "http://www.livemint.com/Query/hHUQJ3ncBXZBGH3eVyKlkJ/energy.html?facet=subSection&page=0"    
+        temp = url_energy+str(i)
+        start_urls.append(temp)
+        
+        if i in range(0,4):
+            url_industry_opinion = "http://www.livemint.com/Query/t5YPD42JdoNxoDBxwNemkJ/industry-opinion.html?facet=subSection&page=0"    
+            temp = url_industry_opinion+str(i)
+            start_urls.append(temp)
+            
+    #self.start_urls=self.start_urls[0]
+	## end
+
+
     def parse(self, response):
         
         title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
@@ -124,47 +167,3 @@ def parse(self, response):
         return {'href':response.url,'body':result}
         
 '''
-'''
-    for i in range(24,-1,-1):
-        
-        if i in range(0,5):
-            url_company_opinion = "http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page="
-            temp = url_company_opinion+str(i)
-            start_urls.append(temp)
-    
-        url_company_management = "http://www.livemint.com/Query/V1eAlpSAzt0kHm6oBnOvDI/management.html?facet=subSection&page=0"    
-        temp = url_company_management+str(i)
-        start_urls.append(temp)
-    
-        if i in range(0,11):
-            url_results = "http://www.livemint.com/Query/ZtZgviOVr74zwZ37eD9uDI/results.html?facet=subSection&page=0"    
-            temp = url_results+str(i)
-            start_urls.append(temp)
-        
-        if i in range(0,17):
-            url_people = "http://www.livemint.com/Query/lZy3FU0kP9Cso5deYypuDI/people.html?facet=subSection&page=0"
-            temp = url_people+str(i)
-            start_urls.append(temp)
-        
-        if i in range(0,25):
-            url_infotech = "http://www.livemint.com/Query/P8RBwcvO9gvJl6xh6wTNzO/infotech.html?facet=subSection&page=0"    
-            temp = url_infotech+str(i)
-            start_urls.append(temp)
-        
-        url_finservices = "http://www.livemint.com/Query/5jCbPmmTjmX6bvfyV5XlkJ/financial-services.html?facet=subSection&page=0"    
-        temp = url_finservices+str(i)
-        start_urls.append(temp)
-    
-        url_energy = "http://www.livemint.com/Query/hHUQJ3ncBXZBGH3eVyKlkJ/energy.html?facet=subSection&page=0"    
-        temp = url_energy+str(i)
-        start_urls.append(temp)
-        
-        if i in range(0,4):
-            url_industry_opinion = "http://www.livemint.com/Query/t5YPD42JdoNxoDBxwNemkJ/industry-opinion.html?facet=subSection&page=0"    
-            temp = url_industry_opinion+str(i)
-            start_urls.append(temp)
-            
-    #self.start_urls=self.start_urls[0]
-	## end
-'''
-	
