@@ -22,20 +22,16 @@ class LivemintSpider(scrapy.Spider):
     allowed_domains = ["livemint.com"]
     #urls
     start_urls = []
-    #start_urls.append("http://www.livemint.com/Query/DIoW9PdSAJUlZsu7iBevDI/companies-opinion.html?facet=subSection&page=0")
-	
-	file_name = 'livemint_data_3.csv'
-
+    file_name = 'livemint_data_3.csv'
     df = pd.read_csv(file_name,encoding='iso-8859-1')
-    
     start_urls = df['href'].tolist()
     
-	## end
+    ## end
 
 
     def parse(self, response):
-	
-		path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']/p"
+    
+        path = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@id='div_storyContent']/div[@class='story-content']/p"
         body = response.selector.xpath(path).extract()
         result=""
         for i in body:
@@ -121,7 +117,7 @@ for i in range(24,-1,-1):
 '''
 
 '''
-	def parse(self, response):
+    def parse(self, response):
         title_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
         title_end = "]/div[@class='text-box']/h2[@class='split-heading-strong']/a/text()"        
         intro_start = "/html/body/div[@id='o-wrapper']/div[@class='wrapper']/section[@class='left-col']/div[@class='listing-box-container']/div[@class='listing-box']["
