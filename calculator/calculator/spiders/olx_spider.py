@@ -48,7 +48,7 @@ class Spider(scrapy.Spider):
     def parse(self, response):
         
         i=3
-        path=name_start+str(i)+name_end                
+        path=self.name_start+str(i)+self.name_end                
         CalculatorItem['name'] = response.selector.xpath(path).extract()        
         yield CalculatorItem['name']
         
