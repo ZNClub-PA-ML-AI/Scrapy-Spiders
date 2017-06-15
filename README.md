@@ -44,3 +44,7 @@ tutorial/
 
 - A Telnet console for hooking into a Python console running inside your Scrapy process, to introspect and debug your crawler
 Plus other goodies like reusable spiders to crawl sites from Sitemaps and XML/CSV feeds, a media pipeline for automatically downloading images (or any other media) associated with the scraped items, a caching DNS resolver, and much more
+
+## Getting Started with Scrapy
+
+- (Official Docs Tutorial)[https://doc.scrapy.org/en/latest/intro/tutorial.html]
