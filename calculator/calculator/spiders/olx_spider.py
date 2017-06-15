@@ -19,37 +19,36 @@ class Spider(scrapy.Spider):
     #spider name
     name = "olx_spider"
     #domains
-    allowed_domains = ["olx.in"]
-	
+    allowed_domains = ["olx.in"]    
     #urls
-	start_urls = []
-	url_format = "https://www.olx.in/mumbai/q-scientific-calculator/?view=list&page="
-	max_range = 2
-	for i in range(1,max_range+1):
-		url = url_format + str(i)
-		start_urls.append(url)
+    start_urls=[]
+    url_format = "https://www.olx.in/mumbai/q-scientific-calculator/?view=list&page="
+    max_range = 2
+    for i in range(1,max_range+1):
+        url = url_format + str(i)
+        start_urls.append(url)
     
-	#xpath
-	#[ITER]
-	
+    #xpath
+    #[ITER]
+    
     name_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-	name_end="]/td/table/tbody/tr[1]/td[2]/h3/a"
-	
-	price_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-	price_end="]/td/table/tbody/tr[1]/td/div/p"
-	
-	area_start="/html/body/div/div/section/div/div/div/table/tbody/tr["	
-	area_end="]/td/table/tbody/tr[1]/td[2]/p/small/span"
-	
-	date_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-	date_end="]/td/table/tbody/tr[2]/td[1]/p"
-    	
+    name_end="]/td/table/tbody/tr[1]/td[2]/h3/a"
+    
+    price_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
+    price_end="]/td/table/tbody/tr[1]/td/div/p"
+    
+    area_start="/html/body/div/div/section/div/div/div/table/tbody/tr["    
+    area_end="]/td/table/tbody/tr[1]/td[2]/p/small/span"
+    
+    date_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
+    date_end="]/td/table/tbody/tr[2]/td[1]/p"
+        
     ## end
 
     def parse(self, response):
-		
-		i=3
-		path=name_start+str(i)+name_end				
+        
+        i=3
+        path=name_start+str(i)+name_end                
         CalculatorItem['name'] = response.selector.xpath(path).extract()        
         yield CalculatorItem['name']
         
