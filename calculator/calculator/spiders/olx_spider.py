@@ -32,17 +32,19 @@ class Spider(scrapy.Spider):
     #[ITER]
     
     name_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-    name_end="]/td/table/tbody/tr[1]/td[2]/h3/a"
+    name_end="]/td/table/tbody/tr[1]/td[2]/h3/a/span/text()"
     
     price_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-    price_end="]/td/table/tbody/tr[1]/td/div/p"
+    price_end="]/td/table/tbody/tr[1]/td/div/p/text()"
     
     area_start="/html/body/div/div/section/div/div/div/table/tbody/tr["    
-    area_end="]/td/table/tbody/tr[1]/td[2]/p/small/span"
+    area_end="]/td/table/tbody/tr[1]/td[2]/p/small/span/text()"
     
     date_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-    date_end="]/td/table/tbody/tr[2]/td[1]/p"
+    date_end="]/td/table/tbody/tr[2]/td[1]/p/text()"
         
+    href_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
+    href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href/text()"
     ## end
 
     def parse(self, response):
