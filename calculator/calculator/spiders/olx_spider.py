@@ -35,7 +35,7 @@ class Spider(scrapy.Spider):
     name_end="]/td/table/tbody/tr[1]/td[2]/h3/a/span/text()"
     
     price_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-    price_end="]/td/table/tbody/tr[1]/td/div/p/text()"
+    price_end="]/td/table/tbody/tr[1]/td/div/p/strong/text()"
     
     area_start="/html/body/div/div/section/div/div/div/table/tbody/tr["    
     area_end="]/td/table/tbody/tr[1]/td[2]/p/small/span/text()"
@@ -44,7 +44,7 @@ class Spider(scrapy.Spider):
     date_end="]/td/table/tbody/tr[2]/td[1]/p/text()"
         
     href_start="/html/body/div/div/section/div/div/div/table/tbody/tr["
-    href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href/text()"
+    href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href"
     ## end
 
     def checkEmpty(self,temp):
