@@ -49,9 +49,39 @@ class Spider(scrapy.Spider):
 
     def parse(self, response):
         
-        i=3
-        path=self.name_start+str(i)+self.name_end
+        list_range=40
         item=CalculatorItem()
-        item['name']= response.selector.xpath(path).extract()
-        yield item
+        
+        for i in range(3,list_range+1):
+            
+            
+            #name
+            path=self.name_start+str(i)+self.name_end
+            temp = response.selector.xpath(path).extract()
+            if(temp==None or temp==''):
+                break
+            
+            item['name']= temp
+            
+            #price
+            path=self.price_start+str(i)+self.price_end
+            
+            item['price']= response.selector.xpath(path).extract()
+            
+            #area
+            path=self.area_start+str(i)+self.area_end
+            
+            item['area']= response.selector.xpath(path).extract()
+            
+            #date
+            path=self.date_start+str(i)+self.date_end
+            
+            item['date']= response.selector.xpath(path).extract()
+            
+            #href
+            path=self.href_start+str(i)+self.href_end
+            
+            item['href']= response.selector.xpath(path).extract()
+            
+            yield item
         
