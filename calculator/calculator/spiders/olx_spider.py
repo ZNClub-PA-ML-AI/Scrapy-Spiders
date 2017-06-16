@@ -47,6 +47,9 @@ class Spider(scrapy.Spider):
     href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href/text()"
     ## end
 
+    def checkEmpty(temp):
+        return (temp==None) or (temp=='')
+    
     def parse(self, response):
         
         list_range=40
@@ -57,8 +60,8 @@ class Spider(scrapy.Spider):
             
             #name
             path=self.name_start+str(i)+self.name_end
-            temp = response.selector.xpath(path).extract()
-            if(temp==None or temp==''):
+            temp=response.selector.xpath(path).extract()
+            if(self.checkEmpty(temp)):
                 break
             
             item['name']= temp
@@ -66,7 +69,11 @@ class Spider(scrapy.Spider):
             #price
             path=self.price_start+str(i)+self.price_end
             
-            item['price']= response.selector.xpath(path).extract()
+            temp=response.selector.xpath(path).extract()
+            if(self.checkEmpty(temp)):
+                break
+            
+            item['price']= temp
             
             #area
             path=self.area_start+str(i)+self.area_end
