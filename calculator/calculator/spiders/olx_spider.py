@@ -49,7 +49,7 @@ class Spider(scrapy.Spider):
         
         i=3
         path=self.name_start+str(i)+self.name_end
-        cal=CalculatorItem()
-        cal['name'] = response.selector.xpath(path).extract()
-        yield CalculatorItem['name']
+        item=CalculatorItem()
+        item['name']= response.selector.xpath(path).extract()
+        yield item
         
