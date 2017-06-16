@@ -47,7 +47,7 @@ class Spider(scrapy.Spider):
     href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href/text()"
     ## end
 
-    def checkEmpty(temp):
+    def checkEmpty(self,temp):
         return (temp==None) or (temp=='')
     
     def parse(self, response):
