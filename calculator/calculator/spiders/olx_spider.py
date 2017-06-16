@@ -62,7 +62,7 @@ class Spider(scrapy.Spider):
             path=self.name_start+str(i)+self.name_end
             temp=response.selector.xpath(path).extract()
             if(self.checkEmpty(temp)):
-                break
+                continue
             
             item['name']= temp
             
@@ -71,24 +71,36 @@ class Spider(scrapy.Spider):
             
             temp=response.selector.xpath(path).extract()
             if(self.checkEmpty(temp)):
-                break
+                continue
             
             item['price']= temp
             
             #area
             path=self.area_start+str(i)+self.area_end
             
-            item['area']= response.selector.xpath(path).extract()
+            temp=response.selector.xpath(path).extract()
+            if(self.checkEmpty(temp)):
+                continue
+            
+            item['area']= temp
             
             #date
             path=self.date_start+str(i)+self.date_end
             
-            item['date']= response.selector.xpath(path).extract()
+            temp=response.selector.xpath(path).extract()
+            if(self.checkEmpty(temp)):
+                continue
+            
+            item['date']= temp
             
             #href
             path=self.href_start+str(i)+self.href_end
             
-            item['href']= response.selector.xpath(path).extract()
+            temp=response.selector.xpath(path).extract()
+            if(self.checkEmpty(temp)):
+                continue
+            
+            item['href']= temp
             
             yield item
         
