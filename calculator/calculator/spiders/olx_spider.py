@@ -48,13 +48,7 @@ class Spider(scrapy.Spider):
     ## end
 
     def removeWhitespaces(self,temp):
-        result=''
-        for ch in temp:
-            if ch=='\n' or ch=='\t':
-                continue
-            else:
-                result=result+ch
-        return result
+        return temp.strip().split("\n")[0]
     
     def checkEmpty(self,temp):
         return (temp==None)
