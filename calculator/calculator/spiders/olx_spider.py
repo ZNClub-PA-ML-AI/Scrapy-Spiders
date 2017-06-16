@@ -47,9 +47,18 @@ class Spider(scrapy.Spider):
     href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href"
     ## end
 
-    def checkEmpty(self,temp):
-        return (temp==None) or (temp=='')
+    def removeWhitespaces(self,temp):
+        result=''
+        for ch in temp:
+            if ch=='\n' or ch=='\t':
+                continue
+            else:
+                result=result+ch
+        return result
     
+    def checkEmpty(self,temp):
+        return (temp==None)
+        
     def parse(self, response):
         
         list_range=40
@@ -73,7 +82,7 @@ class Spider(scrapy.Spider):
             if(self.checkEmpty(temp)):
                 continue
             
-            item['price']= temp
+            item['price']= self.removeWhitespaces(temp)
             
             #area
             path=self.area_start+str(i)+self.area_end
