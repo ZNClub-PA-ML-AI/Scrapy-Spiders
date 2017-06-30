@@ -26,13 +26,3 @@ df2=df2.set_index('index')
 df2.to_csv('../calculator.csv', sep=',', encoding='utf-8')
 
 
-temp='                                500                                '
-result=''
-for ch in temp:
-    if ch=='\n' or ch=='\t':
-        continue
-    else:
-        result=result+ch
-return result
-
-

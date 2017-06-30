@@ -47,8 +47,14 @@ class Spider(scrapy.Spider):
     href_end="]/td/table/tbody/tr[1]/td[2]/h3/a/@href"
     ## end
 
-    def removeWhitespaces(self,temp):
-        return temp.strip().split("\n")[0]
+    def removeWhitespaces(self,temp):        
+        #return temp.strip().split("\n")[0]
+        
+        if len(temp)==0:
+            return ""            
+        else:
+            print(int(temp[0]))
+            return int(temp[0])
     
     def checkEmpty(self,temp):
         return (temp==None)
