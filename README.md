@@ -1,5 +1,25 @@
-#Scrapy module - Web Crawling
+# Scrapy-Spiders
+Scrapy module - Web Crawling
+<pre>
 
+  sSSs    sSSs   .S_sSSs     .S_SSSs     .S_sSSs     .S S.     sSSs   .S_sSSs     .S   .S_sSSs      sSSs   .S_sSSs      sSSs  
+ d%%SP   d%%SP  .SS~YS%%b   .SS~SSSSS   .SS~YS%%b   .SS SS.   d%%SP  .SS~YS%%b   .SS  .SS~YS%%b    d%%SP  .SS~YS%%b    d%%SP  
+d%S'    d%S'    S%S   `S%b  S%S   SSSS  S%S   `S%b  S%S S%S  d%S'    S%S   `S%b  S%S  S%S   `S%b  d%S'    S%S   `S%b  d%S'    
+S%|     S%S     S%S    S%S  S%S    S%S  S%S    S%S  S%S S%S  S%|     S%S    S%S  S%S  S%S    S%S  S%S     S%S    S%S  S%|     
+S&S     S&S     S%S    d*S  S%S SSSS%S  S%S    d*S  S%S S%S  S&S     S%S    d*S  S&S  S%S    S&S  S&S     S%S    d*S  S&S     
+Y&Ss    S&S     S&S   .S*S  S&S  SSS%S  S&S   .S*S   SS SS   Y&Ss    S&S   .S*S  S&S  S&S    S&S  S&S_Ss  S&S   .S*S  Y&Ss    
+`S&&S   S&S     S&S_sdSSS   S&S    S&S  S&S_sdSSS     S S    `S&&S   S&S_sdSSS   S&S  S&S    S&S  S&S~SP  S&S_sdSSS   `S&&S   
+  `S*S  S&S     S&S~YSY%b   S&S    S&S  S&S~YSSY      SSS      `S*S  S&S~YSSY    S&S  S&S    S&S  S&S     S&S~YSY%b     `S*S  
+   l*S  S*b     S*S   `S%b  S*S    S&S  S*S           S*S       l*S  S*S         S*S  S*S    d*S  S*b     S*S   `S%b     l*S  
+  .S*P  S*S.    S*S    S%S  S*S    S*S  S*S           S*S      .S*P  S*S         S*S  S*S   .S*S  S*S.    S*S    S%S    .S*P  
+sSS*S    SSSbs  S*S    S&S  S*S    S*S  S*S           S*S    sSS*S   S*S         S*S  S*S_sdSSS    SSSbs  S*S    S&S  sSS*S   
+YSS'      YSSP  S*S    SSS  SSS    S*S  S*S           S*S    YSS'    S*S         S*S  SSS~YSSY      YSSP  S*S    SSS  YSS'    
+                SP                 SP   SP            SP             SP          SP                       SP                  
+                Y                  Y    Y             Y              Y           Y                        Y                   
+                                                                                                                              
+
+
+</pre>
 
 ## Introduction
 Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.
