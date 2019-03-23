@@ -1,5 +1,3 @@
-# Scrapy-Spiders
-Scrapy module - Web Crawling
 <pre>
 
   sSSs    sSSs   .S_sSSs     .S_SSSs     .S_sSSs     .S S.     sSSs   .S_sSSs     .S   .S_sSSs      sSSs   .S_sSSs      sSSs  
@@ -17,9 +15,10 @@ YSS'      YSSP  S*S    SSS  SSS    S*S  S*S           S*S    YSS'    S*S        
                 SP                 SP   SP            SP             SP          SP                       SP                  
                 Y                  Y    Y             Y              Y           Y                        Y                   
                                                                                                                               
-
-
 </pre>
+
+# Scrapy-Spiders
+Scrapy module - Web Crawling
 
 ## Introduction
 Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.
