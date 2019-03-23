@@ -67,13 +67,14 @@ Plus other goodies like reusable spiders to crawl sites from Sitemaps and XML/CS
 
 ## Getting Started with Scrapy
 
-- (Official Docs Tutorial)[https://doc.scrapy.org/en/latest/intro/tutorial.html]
+- [Official Docs](https://doc.scrapy.org/en/latest/intro/tutorial.html)
 
 
 ## Commands
-
-- scrapy startproject project_name
-- scrapy crawl spider_name
-- scrapy crawl spider_name -o file.csv -t csv
-- scrapy crawl spider_name -o file.json -t json
-- scrapy shell "url"
+```bash
+scrapy startproject project_name
+scrapy crawl spider_name
+scrapy crawl spider_name -o file.csv -t csv
+scrapy crawl spider_name -o file.json -t json
+scrapy shell "url"
+```
