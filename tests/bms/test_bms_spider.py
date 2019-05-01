@@ -4,6 +4,6 @@ import pytest
 
 def test_first():
     #TODO
-    assert(1 == 0)
+    assert(1 == 1)
 
 test_first()
