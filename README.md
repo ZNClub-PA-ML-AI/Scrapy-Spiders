@@ -20,6 +20,8 @@ YSS'      YSSP  S*S    SSS  SSS    S*S  S*S           S*S    YSS'    S*S        
 # Scrapy-Spiders
 Scrapy module - Web Crawling
 
+[![Build Status](https://travis-ci.com/ZNClub-PA-ML-AI/Scrapy-Spiders.svg?branch=master)](https://travis-ci.com/ZNClub-PA-ML-AI/Scrapy-Spiders) [![Coverage Status](https://coveralls.io/repos/github/ZNClub-PA-ML-AI/Scrapy-Spiders/badge.svg?branch=master)](https://coveralls.io/github/ZNClub-PA-ML-AI/Scrapy-Spiders?branch=master)
+
 ## Introduction
 Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.
 
@@ -77,3 +79,18 @@ scrapy crawl spider_name -o file.csv -t csv
 scrapy crawl spider_name -o file.json -t json
 scrapy shell "url"
 ```
+## Environment
+Using [conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+```bash
+conda list env # list all environments
+conda activate Scrapy # if Scrapy is listed
+conda create --name Scrapy # if Scrapy is NOT listed
+pip install -r requirements.txt # install dependencies
+conda list # all packages in env
+
+```
+
+## Resources
+
+- Pytest [sample](https://github.com/kevchn/travis-ci-pytest) [good practices](https://docs.pytest.org/en/latest/goodpractices.html)
+- Travis [sample](https://github.com/kevchn/travis-ci-pytest) [travis docs](https://docs.travis-ci.com/user/languages/python/)
