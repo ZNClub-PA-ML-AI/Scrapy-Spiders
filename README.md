@@ -82,7 +82,13 @@ Using [conda environments](https://docs.conda.io/projects/conda/en/latest/user-g
 ```bash
 conda list env # list all environments
 conda activate Scrapy # if Scrapy is listed
+conda create --name Scrapy # if Scrapy is NOT listed
 pip install -r requirements.txt # install dependencies
 conda list # all packages in env
 
 ```
+
+## Resources
+
+- Pytest [sample](https://github.com/kevchn/travis-ci-pytest) [good practices](https://docs.pytest.org/en/latest/goodpractices.html)
+- Travis [sample](https://github.com/kevchn/travis-ci-pytest) [travis docs](https://docs.travis-ci.com/user/languages/python/)

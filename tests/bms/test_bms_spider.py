@@ -2,6 +2,8 @@
 
 import pytest
 
-def first_test():
+def test_first():
     #TODO
     assert(1 == 0)
+
+test_first()
