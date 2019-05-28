@@ -5,5 +5,3 @@ import pytest
 def test_first():
     #TODO
     assert(1 == 0)
-
-test_first()
