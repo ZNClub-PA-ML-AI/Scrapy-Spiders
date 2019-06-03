@@ -84,6 +84,7 @@ Using [conda environments](https://docs.conda.io/projects/conda/en/latest/user-g
 ```bash
 conda env list # list all environments
 conda activate Scrapy # if Scrapy is listed
+conda deactivate # deactivate current environment
 conda create --name Scrapy # if Scrapy is NOT listed
 pip install -r requirements.txt # install dependencies
 conda list # all packages in env
